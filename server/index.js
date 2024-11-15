@@ -4,8 +4,9 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/musicdb', {
@@ -19,6 +20,11 @@ const Song = mongoose.model('Song', {
   artist: String,
   album: String,
   duration: String
+});
+
+// Default route for testing
+app.get('/', (req, res) => {
+  res.send('Welcome to the Music API! Use /songs to interact with the API.');
 });
 
 // CRUD Operations for MongoDB

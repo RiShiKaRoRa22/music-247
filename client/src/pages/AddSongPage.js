@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function AddSongPage() {
+  console.log('AddSongPage component is rendering'); // Debugging line
+
   const [song, setSong] = useState({ title: '', artist: '', album: '' });
 
   const handleChange = (e) => {
@@ -10,12 +12,9 @@ function AddSongPage() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submit behavior
+    e.preventDefault();
     try {
-      // Send the song data to your backend
       await axios.post('http://localhost:5000/songs', song);
-      console.log('Song added:', song);
-      // Clear form after submitting
       setSong({ title: '', artist: '', album: '' });
     } catch (error) {
       console.error('Error adding song:', error);

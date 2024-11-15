@@ -40,6 +40,7 @@ function App() {
             path="/edit-song/:id"
             element={<EditSongPage fetchSongs={fetchSongs} />}
           />
+          <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </div>
     </Router>
